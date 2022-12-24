@@ -7,6 +7,7 @@
 #include <queue>
 #include <stack>
 
+using namespace std;
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace UnitTests
@@ -18,8 +19,9 @@ namespace UnitTests
 		TEST_METHOD(ModelInfixCoversion)
 		{
 			Model m;
-			std::queue<std::string> rpn = m.InfixToPostfix("((1+2)*3)^2*(1+2)");
-			std::string arr[] = { "1","2","+","3","*","2","^","1","2","+","*" };
+			std::string input = "((11+2)*3)^2*(1+2)";
+			std::queue<std::string> rpn = m.InfixToPostfix(input);
+			std::string arr[] = { "11","2","+","3","*","2","^","1","2","+","*" };
 			for (std::string token : arr) {
 				Assert::AreEqual(rpn.front(), token);
 				rpn.pop();

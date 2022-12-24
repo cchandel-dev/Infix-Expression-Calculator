@@ -3,16 +3,19 @@
 
 #include <iostream>
 #include <queue>
-#include "Model.cpp"
+#include <Model.cpp>
 #include "View.h"
 
 int main()
 {
     View v;
     Model m;
-    std::string input = v.getInput();
-    queue<std::string> rpn = m.InfixToPostfix(input);
-    std::cout << "Hello World!\n";
+    while (true) {
+        std::string input = v.getInput();
+        queue<std::string> rpn = m.InfixToPostfix(input);
+        double output = m.EvaluatePostfix(rpn);
+        v.displayAnswer(output);
+    }
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
