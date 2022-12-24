@@ -40,12 +40,9 @@ std::queue<std::string> Model::InfixToPostfix(std::string input) {
 			*/
 			if (ch == '+' || ch == '-' || ch == 'x' || ch == '*' || ch == '/' || ch == '\\' || ch == '%' || ch == '^') {
 
-				while (holdOperators.size() != 0 && holdOperators.top() != "(") {
-					bool precendenceTest = precedence[holdOperators.top()] > precedence[std::to_string(ch)];
-					if (precendenceTest) {
+				while (holdOperators.size() != 0 && holdOperators.top() != "(" && precedence[holdOperators.top()] > precedence[std::to_string(ch)]) {
 						output.push(holdOperators.top());
 						holdOperators.pop();
-					}
 				}
 				holdOperators.push(std::string(1, ch));
 			}
