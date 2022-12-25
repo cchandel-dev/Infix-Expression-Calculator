@@ -60,5 +60,12 @@ namespace UnitTests
 			double val = 1.0/3 +3.0;
 			Assert::AreEqual(val, output);
 		}
+		TEST_METHOD(BalancedBrackets)
+		{
+			Model m;
+			queue<std::string> rpn = m.InfixToPostfix("(3+(9-10))^(2*(1-1.5))");
+			double output = m.EvaluatePostfix(rpn);
+			Assert::AreEqual(0.5, output);
+		}
 	};
 }
