@@ -39,8 +39,7 @@ std::queue<std::string> Model::InfixToPostfix(std::string input) {
 			If there are, pop them off the stack and add them to the output queue before pushing the new operator onto the stack.
 			*/
 			if (ch == '+' || ch == '-' || ch == 'x' || ch == '*' || ch == '/' || ch == '\\' || ch == '%' || ch == '^') {
-
-				while (holdOperators.size() != 0 && holdOperators.top() != "(" && precedence[holdOperators.top()] > precedence[std::to_string(ch)]) {
+				while (holdOperators.size() != 0 && holdOperators.top() != "("&& precedence[holdOperators.top()]  > precedence[std::string(1, ch)]) {
 						output.push(holdOperators.top());
 						holdOperators.pop();
 				}

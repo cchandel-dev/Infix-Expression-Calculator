@@ -38,5 +38,12 @@ namespace UnitTests
 			double val = m.EvaluatePostfix(rpn);
 			Assert::AreEqual(val, 243.0);
 		}
+		TEST_METHOD(OrderOfOperations) 
+		{
+			Model m;
+			queue<std::string> rpn = m.InfixToPostfix("3*10^2+(5/6+(3+2/12))");
+        	double output = m.EvaluatePostfix(rpn);
+			Assert::AreEqual(output, 304.00);
+		}
 	};
 }
