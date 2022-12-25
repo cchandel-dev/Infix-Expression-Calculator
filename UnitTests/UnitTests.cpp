@@ -36,14 +36,21 @@ namespace UnitTests
 				rpn.push(token);
 			}
 			double val = m.EvaluatePostfix(rpn);
-			Assert::AreEqual(val, 243.0);
+			Assert::AreEqual(243.0, val);
 		}
 		TEST_METHOD(OrderOfOperations) 
 		{
 			Model m;
 			queue<std::string> rpn = m.InfixToPostfix("3*10^2+(5/6+(3+2/12))");
         	double output = m.EvaluatePostfix(rpn);
-			Assert::AreEqual(output, 304.00);
+			Assert::AreEqual(304.00, output);
+		}
+		TEST_METHOD(NegativeNumbers)
+		{
+			Model m;
+			queue<std::string> rpn = m.InfixToPostfix("1-2+3");
+			double output = m.EvaluatePostfix(rpn);
+			Assert::AreEqual(2.00, output);
 		}
 	};
 }

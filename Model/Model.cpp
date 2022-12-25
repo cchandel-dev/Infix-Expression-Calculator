@@ -8,7 +8,7 @@ std::queue<std::string> Model::InfixToPostfix(std::string input) {
 	//Create an empty stack for holding operators and a queue for holding the output.
 	stack<std::string> holdOperators;
 	queue<std::string> output;
-	unordered_map<std::string, int> precedence = { {"+", 0}, {"-", 0}, {"*", 1}, {"x", 1}, {"/", 1}, {"\\", 1}, {"%", 1}, {"^",2} };
+	unordered_map<std::string, int> precedence = { {"+", 1}, {"-", 1}, {"*", 2}, {"x", 2}, {"/", 2}, {"\\", 2}, {"%", 2}, {"^",3} };
 	std::string token;
 	for (char ch : input) {
 		if (isdigit(ch)) {
@@ -33,17 +33,14 @@ std::queue<std::string> Model::InfixToPostfix(std::string input) {
 				}
 				holdOperators.pop();//ignore ch and don't add it and get rid of left side parenthesis.
 			}
-			/*
-			If the current character is an operator, push it onto the operator stack.
-			However, before doing so, you must check if there are any operators on the operator stack with higher precedence.
-			If there are, pop them off the stack and add them to the output queue before pushing the new operator onto the stack.
-			*/
+
 			if (ch == '+' || ch == '-' || ch == 'x' || ch == '*' || ch == '/' || ch == '\\' || ch == '%' || ch == '^') {
-				while (holdOperators.size() != 0 && holdOperators.top() != "("&& precedence[holdOperators.top()]  > precedence[std::string(1, ch)]) {
+				while (holdOperators.size() && precedence[holdOperators.top()]  >= precedence[std::string(1, ch)]) {
 						output.push(holdOperators.top());
 						holdOperators.pop();
 				}
 				holdOperators.push(std::string(1, ch));
+				
 			}
 		}
 
