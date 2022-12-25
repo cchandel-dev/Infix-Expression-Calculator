@@ -11,7 +11,7 @@ std::queue<std::string> Model::InfixToPostfix(std::string input) {
 	unordered_map<std::string, int> precedence = { {"+", 1}, {"-", 1}, {"*", 2}, {"x", 2}, {"/", 2}, {"\\", 2}, {"%", 2}, {"^",3} };
 	std::string token;
 	for (char ch : input) {
-		if (isdigit(ch)) {
+		if (precedence.find(std::string(1, ch)) == precedence.end() && ch != '(' && ch != ')') {
 			token += ch;
 		}
 		else {

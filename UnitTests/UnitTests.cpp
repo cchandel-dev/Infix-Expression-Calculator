@@ -52,5 +52,13 @@ namespace UnitTests
 			double output = m.EvaluatePostfix(rpn);
 			Assert::AreEqual(2.00, output);
 		}
+		TEST_METHOD(RealNumbers)
+		{
+			Model m;
+			queue<std::string> rpn = m.InfixToPostfix("3+9^(1-1.5)");
+			double output = m.EvaluatePostfix(rpn);
+			double val = 1.0/3 +3.0;
+			Assert::AreEqual(val, output);
+		}
 	};
 }
