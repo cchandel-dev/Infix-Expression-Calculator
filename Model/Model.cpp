@@ -62,6 +62,10 @@ std::queue<std::string> Model::InfixToPostfix(std::string input) {
 
 bool isNumber(const string& s)
 {
+	for (char ch : s) {
+		if (!isdigit(ch) && ch != '.')
+			throw UnsupportedExpression();
+	}
 	try
 	{
 		stod(s);
@@ -107,5 +111,7 @@ double Model::EvaluatePostfix(std::queue<std::string> input) {
 		input.pop();
 	}
 	//After all tokens have been processed, the result will be the top element of the stack.
+	if (operands.size() != 1)
+		throw UnsupportedExpression();
 	return operands.top();
 }
