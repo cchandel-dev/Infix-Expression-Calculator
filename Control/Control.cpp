@@ -44,6 +44,7 @@ int main()
             const char* cstr = str.c_str();
 
             cout << "****This expression contains unsupported operations, Wolfram Alpha API will be used instead.****" << endl;
+            cout << input + " = ";
             system(cstr);
             cout << "\n\n" << endl;
         }

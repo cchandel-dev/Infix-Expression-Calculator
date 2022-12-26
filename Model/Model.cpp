@@ -62,10 +62,6 @@ std::queue<std::string> Model::InfixToPostfix(std::string input) {
 
 bool isNumber(const string& s)
 {
-	for (char ch : s) {
-		if (!isdigit(ch) && ch != '.')
-			throw UnsupportedExpression();
-	}
 	try
 	{
 		stod(s);
@@ -87,6 +83,10 @@ double Model::EvaluatePostfix(std::queue<std::string> input) {
 	while (input.size()) {
 		if (isNumber(input.front()))
 		{
+			for (char ch : input.front()) {
+				if (!isdigit(ch) && ch != '.')
+					throw UnsupportedExpression();
+			}
 			operands.push(stod(input.front()));
 		}
 		else {
