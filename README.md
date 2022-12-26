@@ -11,7 +11,8 @@ to Wolfram Alpha's API. The reply will be delivered to you as the answer.
 The algorithm for my default Calculator is shown below.
   1. Convert Infix Expression to Postfix Expression.
       I used the Shunting Yard algorithm (developed by Djikstra) for this process whose pseudocode is show below
-            While there are tokens to be read:
+           
+           While there are tokens to be read:
                 Read next token
                 If it's a number add it to queue
                 If it's an operator
@@ -24,12 +25,14 @@ The algorithm for my default Calculator is shown below.
                          Pop operators from the stack onto the output queue.
                    Pop the left bracket from the stack and discard it
             While there are operators on the stack, pop them to the queue
+            
   2. Evaluate the Postfix Expression.
-      I used the algorithm below to evaluate the Postfix Expression.
-        Create a stack to store operands (or values). 
-        Scan the given expression from left to right and do the following for every scanned element. 
-            If the element is a number, push it into the stack 
-            If the element is an operator, pop operands for the operator from the stack. Evaluate the operator and push the result back to the stack 
-        When the expression is ended, the number in the stack is the final answer
+      I used the algorithm whose pseudocode is shown below to evaluate the Postfix Expression.
+         
+          Create a stack to store operands (or values). 
+          Scan the given expression from left to right and do the following for every scanned element. 
+              If the element is a number, push it into the stack 
+              If the element is an operator, pop operands for the operator from the stack. Evaluate the operator and push the result back to the stack 
+          When the expression is ended, the number in the stack is the final answer
       
 ![](https://github.com/cchandel-dev/Calculator/blob/main/demo.gif)
