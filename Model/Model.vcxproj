@@ -20,9 +20,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Model.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="UnsupportedExpression.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Model.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Model.rc" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

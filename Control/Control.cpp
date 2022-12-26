@@ -12,9 +12,41 @@ int main()
     Model m;
     while (true) {
         std::string input = v.getInput();
-        queue<std::string> rpn = m.InfixToPostfix(input);
-        double output = m.EvaluatePostfix(rpn);
-        v.displayAnswer(output);
+        double output;
+        try {
+            std::queue<std::string> postfix = m.InfixToPostfix(input);
+            output = m.EvaluatePostfix(postfix);
+            v.displayAnswer(output);
+        }
+        catch (...) {
+            std::unordered_map<char, std::string> http_reserved_chars = {
+                {';', "%3B"},
+                {'/', "%2F"},
+                {'?', "%3F"},
+                {':', "%3A"},
+                {'@', "%40"},
+                {'&', "%26"},
+                {'=', "%3D"},
+                {'+', "%2B"},
+                {'$', "%24"},
+                {',', "%2C"},
+                {'!', "%21"},
+                {'*', "%2A"},
+                {'\'', "%27"},
+                {'(', "%28"},
+                {')', "%29"},
+            };
+            std::string query;
+            for (int i = 0; i < input.length(); i++) {
+                query += http_reserved_chars.find(input[i]) != http_reserved_chars.end() ? http_reserved_chars[input[i]] : std::string(1, input[i]);
+            }
+            std::string str = "curl -X POST \"https://api.wolframalpha.com/v1/result\" -d \"appid=8Y744E-VKQPLPQ2P4&i=" + query + "\"";
+            const char* cstr = str.c_str();
+
+            cout << "****This expression contains unsupported operations, Wolfram Alpha API will be used instead.****" << endl;
+            system(cstr);
+            cout << "\n\n" << endl;
+        }
     }
 }
 

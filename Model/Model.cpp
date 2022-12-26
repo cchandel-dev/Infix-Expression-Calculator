@@ -1,4 +1,5 @@
 #include "Model.h"
+#include "UnsupportedExpression.h"
 #include <stack>
 #include <cctype>
 #include <unordered_map>
@@ -27,11 +28,15 @@ std::queue<std::string> Model::InfixToPostfix(std::string input) {
 				>Discard the left and right parentheses.
 			*/
 			if (ch == ')') {
-				while (holdOperators.top() != "(") {
-					output.push(holdOperators.top());
-					holdOperators.pop();
+				if (holdOperators.size()) {
+					while (holdOperators.top() != "(") {
+						output.push(holdOperators.top());
+						holdOperators.pop();
+					}
+					holdOperators.pop();//ignore ch and don't add it and get rid of left side parenthesis.
 				}
-				holdOperators.pop();//ignore ch and don't add it and get rid of left side parenthesis.
+				else
+					throw UnsupportedExpression();
 			}
 
 			if (ch == '+' || ch == '-' || ch == 'x' || ch == '*' || ch == '/' || ch == '\\' || ch == '%' || ch == '^') {
@@ -82,6 +87,8 @@ double Model::EvaluatePostfix(std::queue<std::string> input) {
 		}
 		else {
 			std::string operation = input.front();
+			if(operands.size()<2)
+				throw UnsupportedExpression();
 			double operand2 = operands.top();
 			operands.pop();
 			double operand1 = operands.top();
