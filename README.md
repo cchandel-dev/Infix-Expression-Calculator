@@ -1,13 +1,12 @@
 # Calculator
 I built a Calculator using an MVC architecture and followed a Test Driven Developement Methodology.
-The idea for this project started because I recieved an interview question on it asking
-me to build a calculator for a string math expression and I messed up quite badly, so I
-decided to learn how to build one properly.
+The idea for this project came to me because I recieved an interview question asking me to build a
+calculator for a string math expression and I messed up quite badly, so I decided to learn how to build one properly.
 
-This program will take your input and try to run it against my Calculator(default) and
+This program will take your input and try to run it against my Calculator implementation (default) and
 if that doesn't work because you have some unsupported operations (ie unary operators,
 scientific operations, assumed implicit conversions), this program will send this expression 
-to Wolfram Alpha's API. This reply will be delivered to you as the answer.
+to Wolfram Alpha's API. The reply will be delivered to you as the answer.
 
 The algorithm my default Calculator follows is as shown below.
   1. Convert Infix Expression to Postfix Expression.
