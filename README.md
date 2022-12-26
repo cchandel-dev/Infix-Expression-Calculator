@@ -8,7 +8,7 @@ if that doesn't work because you have some unsupported operations (ie unary oper
 scientific operations, assumed implicit conversions), this program will send this expression 
 to Wolfram Alpha's API. The reply will be delivered to you as the answer.
 
-The algorithm my default Calculator follows is as shown below.
+The algorithm for my default Calculator is shown below.
   1. Convert Infix Expression to Postfix Expression.
       I used the Shunting Yard algorithm (developed by Djikstra) for this process whose pseudocode is show below
             While there are tokens to be read:
