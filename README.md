@@ -1,5 +1,5 @@
 # Calculator
-I built a Calculator using an MVC architecture and followed a Test Driven Methodology.
+I built a Calculator using an MVC architecture and followed a Test Driven Developement Methodology.
 The idea for this project started because I recieved an interview question on it asking
 me to build a calculator for a string math expression and I messed up quite badly, so I
 decided to learn how to build one properly.
