@@ -8,6 +8,12 @@ if that doesn't work because you have some unsupported operations (ie unary oper
 scientific operations, assumed implicit conversions), this program will send this expression 
 to Wolfram Alpha's API. The reply will be delivered to you as the answer.
 
+To run this program follow these steps.
+
+    1. Clone this repo
+    2. Open Calculator.sln in Microsoft Visual Studio
+    3. Build and Run!
+
 The algorithm for my default Calculator is shown below.
   1. Convert Infix Expression to Postfix Expression.
       I used the Shunting Yard algorithm (developed by Djikstra) for this process whose pseudocode is show below
